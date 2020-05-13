@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Users List Sample</string>
+    <string name="title">Contatos</string>
+
+    <!--ERRORS-->
+    <string name="error">Ocorreu um erro. Tente novamente.</string>
+    <string name="list_empty_error">Não foram encontrados resultados para a busca</string>
+    <string name="generic_error_message">Erro desconhecido</string>
+
+</resources>
