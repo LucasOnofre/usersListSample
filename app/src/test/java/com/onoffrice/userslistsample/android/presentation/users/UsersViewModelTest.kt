@@ -8,6 +8,7 @@ import com.onoffrice.userslistsample.data.model.User
 import com.onoffrice.userslistsample.data.model.UsersResult
 import com.onoffrice.userslistsample.data.network.repository.UsersRepository
 import com.onoffrice.userslistsample.presentation.users.UsersViewModel
+import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -33,7 +34,7 @@ class UsersViewModelTest {
 
     @Test
     fun `when viewModel getUsers result in success then sets usersListLiveData`() {
-       //Arrange
+        //Arrange
         val users = arrayListOf(
             User(id = 1, img = "Image 1", name = "name 1", username = "username 1")
         )
@@ -47,6 +48,7 @@ class UsersViewModelTest {
 
         // Assert
         verify(usersListLiveDataObserver).onChanged(users)
+        Assert.assertEquals(viewModel.usersListLiveData.value, users)
     }
 
     @Test
@@ -63,6 +65,7 @@ class UsersViewModelTest {
 
         // Assert
         verify(errorLiveDataObserver).onChanged(message)
+        Assert.assertEquals(viewModel.errorLiveData.value, message)
     }
 
     @Test
@@ -77,6 +80,7 @@ class UsersViewModelTest {
 
         // Assert
         verify(emptyListErrorLiveDataObserver).onChanged(R.string.list_empty_error)
+        Assert.assertEquals(viewModel.emptyListErrorLiveData.value, R.string.list_empty_error)
     }
 }
 
@@ -85,4 +89,3 @@ class MockRepository(private val result: UsersResult) : UsersRepository {
         usersResultCallback(result)
     }
 }
-
